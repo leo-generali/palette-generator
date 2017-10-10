@@ -1,0 +1,23 @@
+import React, { Component } from 'react';
+import { StyleSheet, css } from 'aphrodite/no-important';
+
+import Color from './Color';
+
+class CurrentPalette extends Component {
+  render() {
+    return(
+      <div className={css(style.paletteContainer)}>{
+        this.props.palette.map((color, index) => <Color key={index} className={css(style.color)} color={color} />)
+      }</div>
+    )
+  }
+}
+
+const style = StyleSheet.create({
+  paletteContainer: {
+    display: 'flex',
+    justifyContent: 'space-around'
+  },
+})
+
+export default CurrentPalette;
