@@ -61,10 +61,9 @@ class App extends Component {
 
     const self = this;
     let paletteRef = firebase.database().ref('/palettes');
-    console.log('Fired!!! 🔥')
     paletteRef.on('value', function(snapshot) {
-      const savedPalettes = snapshot.val();
-      // const savedPalettes = Object.entries(snapshot.val()).map(e => Object.assign(e[1], {key: e[0] }));
+      const savedPalettes = snapshot.val() ? snapshot.val() : []
+      console.log(savedPalettes);
       self.setState({
         savedPalettes
       })
@@ -144,9 +143,10 @@ class App extends Component {
   removeSavedPalette(id) {
     const { ...savedPalettes } = this.state.savedPalettes; 
     delete savedPalettes[id];
-    this.setState({
-      savedPalettes
-    })
+    firebase.database().ref('/palettes').child(id).remove();
+    // this.setState({
+    //   savedPalettes
+    // })
   }
 
   render() {
