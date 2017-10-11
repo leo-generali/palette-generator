@@ -19,52 +19,56 @@ class App extends Component {
     this.onDrop = this.onDrop.bind(this);
     this.savePaletteToDB = this.savePaletteToDB.bind(this);
     this.changeDisplayedPalette = this.changeDisplayedPalette.bind(this);
+    this.removeSavedPalette = this.removeSavedPalette.bind(this);
   }
 
   //Now that I know this works - temporarily turning it off during development to avoid
   //pinging the firebase DB too much
 
   componentWillMount(){
-    const savedPalettes = [
-      {
-        darkmuted: "#2E4658",
-        darkvibrant: "#042444",
-        key: "-Kw6xvfJ_VOjmfwrkxro",
-        lightmuted: "#D8B7A5",
-        lightvibrant: "#FB5B8B",
-        muted: "#6286AB",
-        vibrant: "#FA5304"
-      },
-      {
-        darkmuted: "#2E4658",
-        darkvibrant: "#042444",
-        key: "-Kw6xvfJ_VOjmfwrkxro",
-        lightmuted: "#D8B7A5",
-        lightvibrant: "#FB5B8B",
-        muted: "#6286AB",
-        vibrant: "#FA5304"
-      },
-      {
-        darkmuted: "#2E4658",
-        darkvibrant: "#042444",
-        key: "-Kw6xvfJ_VOjmfwrkxro",
-        lightmuted: "#D8B7A5",
-        lightvibrant: "#FB5B8B",
-        muted: "#6286AB",
-        vibrant: "#FA5304"
-      }
-    ];
-    this.setState({
-      savedPalettes
-    });
-
-    // const self = this;
-    // firebase.database().ref('/palettes').on('value', function(snapshot) {
-    //   const savedPalettes = Object.entries(snapshot.val()).map(e => Object.assign(e[1], {key: e[0] }));
-    //   self.setState({
-    //     savedPalettes
-    //   })
+    // const savedPalettes = [
+    //   {
+    //     darkmuted: "#2E4658",
+    //     darkvibrant: "#042444",
+    //     key: "-Kw6xvfJ_VOjmfwrkxro",
+    //     lightmuted: "#D8B7A5",
+    //     lightvibrant: "#FB5B8B",
+    //     muted: "#6286AB",
+    //     vibrant: "#FA5304"
+    //   },
+    //   {
+    //     darkmuted: "#2E4658",
+    //     darkvibrant: "#042444",
+    //     key: "-Kw6xvfJ_VOjmfwrkxro",
+    //     lightmuted: "#D8B7A5",
+    //     lightvibrant: "#FB5B8B",
+    //     muted: "#6286AB",
+    //     vibrant: "#FA5304"
+    //   },
+    //   {
+    //     darkmuted: "#2E4658",
+    //     darkvibrant: "#042444",
+    //     key: "-Kw6xvfJ_VOjmfwrkxro",
+    //     lightmuted: "#D8B7A5",
+    //     lightvibrant: "#FB5B8B",
+    //     muted: "#6286AB",
+    //     vibrant: "#FA5304"
+    //   }
+    // ];
+    // this.setState({
+    //   savedPalettes
     // });
+
+    const self = this;
+    let paletteRef = firebase.database().ref('/palettes');
+    console.log('Fired!!! 🔥')
+    paletteRef.on('value', function(snapshot) {
+      const savedPalettes = snapshot.val();
+      // const savedPalettes = Object.entries(snapshot.val()).map(e => Object.assign(e[1], {key: e[0] }));
+      self.setState({
+        savedPalettes
+      })
+    });
   }
 
   state = {
@@ -124,17 +128,25 @@ class App extends Component {
 
   savePaletteToDB(e){
     e.preventDefault();
-    // const currentPalette = this.state.palette;
-    // const paletteObj = {
-    //   vibrant: currentPalette.vibrant,
-    //   muted: currentPalette.muted,
-    //   darkvibrant: currentPalette.darkvibrant,
-    //   darkmuted: currentPalette.darkmuted,
-    //   lightvibrant: currentPalette.lightvibrant,
-    //   lightmuted: currentPalette.lightmuted
-    // }
-    // const paletteRef = firebase.database().ref('/').child('palettes');
-    // const newPaletteRef = paletteRef.push().set(paletteObj);
+    const currentPalette = this.state.palette;
+    const paletteObj = {
+      vibrant: currentPalette.vibrant,
+      muted: currentPalette.muted,
+      darkvibrant: currentPalette.darkvibrant,
+      darkmuted: currentPalette.darkmuted,
+      lightvibrant: currentPalette.lightvibrant,
+      lightmuted: currentPalette.lightmuted
+    }
+    const paletteRef = firebase.database().ref('/').child('palettes');
+    const newPaletteRef = paletteRef.push().set(paletteObj);
+  }
+
+  removeSavedPalette(id) {
+    const { ...savedPalettes } = this.state.savedPalettes; 
+    delete savedPalettes[id];
+    this.setState({
+      savedPalettes
+    })
   }
 
   render() {
@@ -155,6 +167,7 @@ class App extends Component {
         />
         <SavedPaletteContainer 
           savedPalettes={this.state.savedPalettes}
+          removeSavedPalette={this.removeSavedPalette}
           changeDisplayedPalette={this.changeDisplayedPalette}
         />
       </div>

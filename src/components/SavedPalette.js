@@ -4,6 +4,7 @@ import { StyleSheet, css } from 'aphrodite/no-important';
 class SavedPalette extends Component {
   render() {
     const palette = this.props.palette;
+    const id = this.props.id;
 
     return(
       <div className={css(styles.savedPaletteContainer)} onClick={() => this.props.changeDisplayedPalette(palette)}>
@@ -13,6 +14,7 @@ class SavedPalette extends Component {
         <div className={css(styles.savedPaletteColor)} style={{backgroundColor: palette.darkmuted}}></div>
         <div className={css(styles.savedPaletteColor)} style={{backgroundColor: palette.lightvibrant}}></div>
         <div className={css(styles.savedPaletteColor)} style={{backgroundColor: palette.lightmuted}}></div>
+        <button className={css(styles.deleteButton)} onClick={() => this.props.removeSavedPalette(id)}/>
       </div>
     )
   }
@@ -26,6 +28,12 @@ const styles = StyleSheet.create({
   savedPaletteColor: {
     height: '50px',
     width: '50px'
+  },
+  deleteButton: {
+    height: '50px',
+    width: '50px',
+    backgroundColor: 'red',
+    marginLeft: '20px'
   }
 });
 

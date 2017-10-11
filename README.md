@@ -13,7 +13,7 @@
 **Palettes**
 - Name palettes on save -> display palette names rather than the unique Firebase string - MP
 - Delete palettes that you don't care about - HP
-- See full color previews of the palettes - HP
+<!-- - See full color previews of the palettes - HP -->
 - Shuffle colors for inspiration? - LP
 - Copy entire palette as JS object or Sass text - HP
 

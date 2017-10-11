@@ -16,8 +16,8 @@ class SaveButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    width: '200px',
-    height: '200px',
+    height: '50px',
+    width: '50px',
     backgroundColor: 'red'
   }
 }) 

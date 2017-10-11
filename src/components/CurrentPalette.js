@@ -8,9 +8,11 @@ class CurrentPalette extends Component {
     const colorsArr = Object.values(this.props.palette);
 
     return(
-      <div className={css(style.paletteContainer)}>{
-        colorsArr.map((color, index) => <Color key={index} className={css(style.color)} color={color} />)
-      }</div>
+      <div className={css(style.paletteContainer)}>
+        {
+          colorsArr.map((color, index) => <Color key={index} className={css(style.color)} color={color} />)
+        }
+      </div>
     )
   }
 }

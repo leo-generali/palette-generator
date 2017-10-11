@@ -7,8 +7,6 @@ class FileUpload extends Component {
     super();
   }
 
-
-
   render() {
     return(
       <section>
