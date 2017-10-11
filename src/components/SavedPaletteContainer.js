@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { colors } from '../styles/global';
+import { colors, extra } from '../styles/global';
 import { fontSize } from '../styles/typography';
 
 import SavedPalette from './SavedPalette';
@@ -11,26 +11,28 @@ class SavedPaletteContainer extends Component {
       <div>
         <h1 className={css(styles.header)}>Saved Palettes</h1>
         <div className={css(styles.palettes)}>
-          {
-            Object.entries(this.props.savedPalettes).map((elem, index) => 
-              <SavedPalette 
-                changeDisplayedPalette={this.props.changeDisplayedPalette}
-                removeSavedPalette={this.props.removeSavedPalette} 
-                id={elem[0]}
-                palette={elem[1]}
-                key={index}
-              />
-            )
+          <div className={css(styles.palettesList)}>
+            {
+              Object.entries(this.props.savedPalettes).map((elem, index) => 
+                <SavedPalette 
+                  changeDisplayedPalette={this.props.changeDisplayedPalette}
+                  removeSavedPalette={this.props.removeSavedPalette} 
+                  id={elem[0]}
+                  palette={elem[1]}
+                  key={index}
+                />
+              )
 
-            // this.props.savedPalettes.map((palette, index) => 
-            //   <SavedPalette
-            //     changeDisplayedPalette={this.props.changeDisplayedPalette} 
-            //     palette={palette} 
-            //     key={index}
-            //     removeSavedPalette={this.props.removeSavedPalette} 
-            //   />
-            // )
-          }
+              // this.props.savedPalettes.map((palette, index) => 
+              //   <SavedPalette
+              //     changeDisplayedPalette={this.props.changeDisplayedPalette} 
+              //     palette={palette} 
+              //     key={index}
+              //     removeSavedPalette={this.props.removeSavedPalette} 
+              //   />
+              // )
+            }
+          </div>
         </div>
       </div>
     )
@@ -48,8 +50,20 @@ const styles = StyleSheet.create({
   },
 
   palettes: {
-    maxWidth: '960px',
-    margin: '0 auto'
+
+    maxWidth: '800px',
+    margin: '100px auto 0',
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    paddingTop: '40px',
+    borderRadius: extra.borderRadius
+  },
+
+  palettesList: {
+    marginLeft: '-80px',
+    width: '960px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between'
   }
 })
 

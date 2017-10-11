@@ -43,6 +43,38 @@ class App extends Component {
         muted: "#A9615F",
         vibrant: "#EF1809"
       }, 
+      '-jdfgh-mX1Ryu': {
+        darkmuted: "#45352C",
+        darkvibrant: "#8E4434",
+        lightmuted: "#C8B5A7",
+        lightvibrant: "#F8D0AB",
+        muted: "#A9615F",
+        vibrant: "#EF1809"
+      },  
+      '-rqwe-mX1Ryu': {
+        darkmuted: "#45352C",
+        darkvibrant: "#8E4434",
+        lightmuted: "#C8B5A7",
+        lightvibrant: "#F8D0AB",
+        muted: "#A9615F",
+        vibrant: "#EF1809"
+      },  
+      '-faqwe-mX1Ryu': {
+        darkmuted: "#45352C",
+        darkvibrant: "#8E4434",
+        lightmuted: "#C8B5A7",
+        lightvibrant: "#F8D0AB",
+        muted: "#A9615F",
+        vibrant: "#EF1809"
+      },  
+      '-asd-mX1Ryu': {
+        darkmuted: "#45352C",
+        darkvibrant: "#8E4434",
+        lightmuted: "#C8B5A7",
+        lightvibrant: "#F8D0AB",
+        muted: "#A9615F",
+        vibrant: "#EF1809"
+      },  
     };
     this.setState({
       savedPalettes

@@ -20,7 +20,7 @@ class CurrentPalette extends Component {
 const style = StyleSheet.create({
   paletteContainer: {
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   },
 })
 
