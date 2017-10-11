@@ -20,7 +20,7 @@ class App extends Component {
     this.savePaletteToDB = this.savePaletteToDB.bind(this);
   }
 
-  //No that I know this works - temporariliy turning it off during development to avoid
+  //Now that I know this works - temporariliy turning it off during development to avoid
   //pinging the firebase DB too much
 
   componentWillMount(){
@@ -68,14 +68,14 @@ class App extends Component {
 
   state = {
     imagePath: "",
-    palette: [
-      "#FA5304",
-      "#6286AB",
-      "#042444",
-      "#2E4658",
-      "#FB5B8B",
-      "#D8B7A5",
-    ],
+    palette: {
+      vibrant: "#FA5304",
+      muted: "#6286AB",
+      darkvibrant: "#042444",
+      darkmuted: "#2E4658",
+      lightvibrant: "#FB5B8B",
+      lightmuted: "#D8B7A5"
+    },
     savedPalettes: [],
     files: []
   }
@@ -85,10 +85,10 @@ class App extends Component {
     const self = this;
     Vibrant.from(imagePath)
       .quality(1)
-      .getPalette(function(err, palette) {
-        const colorPalette = self.createPalette(palette);
+      .getPalette(function(err, colorPalette) {
+        const palette = self.createPalette(colorPalette);
         self.setState({
-          palette: colorPalette,
+          palette,
           imagePath,
           files
         });
@@ -96,14 +96,14 @@ class App extends Component {
   }
 
   createPalette(palette) {
-    const colors = [
-      palette.Vibrant.getHex().toUpperCase(),
-      palette.Muted.getHex().toUpperCase(),
-      palette.DarkVibrant.getHex().toUpperCase(),
-      palette.DarkMuted.getHex().toUpperCase(),
-      palette.LightVibrant.getHex().toUpperCase(),
-      palette.LightMuted.getHex().toUpperCase()
-    ]
+    const colors = {
+      vibrant: palette.Vibrant.getHex().toUpperCase(),
+      muted: palette.Muted.getHex().toUpperCase(),
+      darkvibrant: palette.DarkVibrant.getHex().toUpperCase(),
+      darkmuted: palette.DarkMuted.getHex().toUpperCase(),
+      lightvibrant: palette.LightVibrant.getHex().toUpperCase(),
+      lightmuted: palette.LightMuted.getHex().toUpperCase()
+    }
     return colors;
   }
 

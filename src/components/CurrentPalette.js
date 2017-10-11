@@ -5,9 +5,11 @@ import Color from './Color';
 
 class CurrentPalette extends Component {
   render() {
+    const colorsArr = Object.values(this.props.palette);
+
     return(
       <div className={css(style.paletteContainer)}>{
-        this.props.palette.map((color, index) => <Color key={index} className={css(style.color)} color={color} />)
+        colorsArr.map((color, index) => <Color key={index} className={css(style.color)} color={color} />)
       }</div>
     )
   }
