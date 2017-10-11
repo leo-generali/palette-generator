@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { colors, extra } from '../styles/global';
+import { colors, card } from '../styles/global';
 import { fontSize } from '../styles/typography';
 
 class SavedPalette extends Component {
@@ -30,7 +30,14 @@ const styles = StyleSheet.create({
     margin: '10px',
     padding: '15px',
     backgroundColor: colors.background,
-    borderRadius: extra.borderRadius
+    borderRadius: card.borderRadius,
+    boxShadow: card.boxShadow,
+    transition: card.transition,
+
+    ':hover': {
+      boxShadow: card.boxShadowHover,
+      transform: card.transform
+    }
   },
 
   savedPaletteColors: {

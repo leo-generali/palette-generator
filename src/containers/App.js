@@ -80,13 +80,6 @@ class App extends Component {
       savedPalettes
     });
 
-
-
-
-
-
-
-
     // const self = this;
     // let paletteRef = firebase.database().ref('/palettes');
     // paletteRef.on('value', function(snapshot) {

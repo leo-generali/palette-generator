@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { colors, extra } from '../styles/global';
+import { colors, card } from '../styles/global';
 import { fontSize } from '../styles/typography';
 
 class Color extends Component {
@@ -9,7 +9,7 @@ class Color extends Component {
       <div className={css(styles.card)}>
         <div className={css(styles.color)} style={{backgroundColor: this.props.color}}></div>
         <div className={css(styles.info)}>
-          <p className={css(styles.text)}>{this.props.color}</p>
+          <p className={css(styles.text)} style={{color: this.props.color}}>{this.props.color}</p>
         </div>
       </div>
     )
@@ -21,15 +21,15 @@ const styles = StyleSheet.create({
     height: '250px',
     width: '180px',
     border: '1px solid '+ colors.text,
-    borderRadius: extra.borderRadius,
+    borderRadius: card.borderRadius,
     overflow: 'hidden',
-    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-    transition: '200ms',
+    boxShadow: card.boxShadow,
+    transition: card.transition,
     cursor: 'pointer',
 
     ':hover': {
-      boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
-      transform: 'scale(1.02)'
+      boxShadow: card.boxShadowHover,
+      transform: card.transform
     }
   },
 

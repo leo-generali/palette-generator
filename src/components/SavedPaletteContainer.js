@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { colors, extra } from '../styles/global';
+import { colors, card } from '../styles/global';
 import { fontSize } from '../styles/typography';
 
 import SavedPalette from './SavedPalette';
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     margin: '100px auto 0',
     backgroundColor: 'rgba(255,255,255,0.1)',
     paddingTop: '40px',
-    borderRadius: extra.borderRadius
+    borderRadius: card.borderRadius
   },
 
   palettesList: {
