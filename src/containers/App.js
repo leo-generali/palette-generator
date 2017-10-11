@@ -26,48 +26,44 @@ class App extends Component {
   //pinging the firebase DB too much
 
   componentWillMount(){
-    // const savedPalettes = [
-    //   {
-    //     darkmuted: "#2E4658",
-    //     darkvibrant: "#042444",
-    //     key: "-Kw6xvfJ_VOjmfwrkxro",
-    //     lightmuted: "#D8B7A5",
-    //     lightvibrant: "#FB5B8B",
-    //     muted: "#6286AB",
-    //     vibrant: "#FA5304"
-    //   },
-    //   {
-    //     darkmuted: "#2E4658",
-    //     darkvibrant: "#042444",
-    //     key: "-Kw6xvfJ_VOjmfwrkxro",
-    //     lightmuted: "#D8B7A5",
-    //     lightvibrant: "#FB5B8B",
-    //     muted: "#6286AB",
-    //     vibrant: "#FA5304"
-    //   },
-    //   {
-    //     darkmuted: "#2E4658",
-    //     darkvibrant: "#042444",
-    //     key: "-Kw6xvfJ_VOjmfwrkxro",
-    //     lightmuted: "#D8B7A5",
-    //     lightvibrant: "#FB5B8B",
-    //     muted: "#6286AB",
-    //     vibrant: "#FA5304"
-    //   }
-    // ];
-    // this.setState({
-    //   savedPalettes
-    // });
-
-    const self = this;
-    let paletteRef = firebase.database().ref('/palettes');
-    paletteRef.on('value', function(snapshot) {
-      const savedPalettes = snapshot.val() ? snapshot.val() : []
-      console.log(savedPalettes);
-      self.setState({
-        savedPalettes
-      })
+    const savedPalettes = {
+      '-KwBqilCVz7RafGWXCEg': {
+        darkmuted: "#2E4658",
+        darkvibrant: "#042444",
+        lightmuted: "#D8B7A5",
+        lightvibrant: "#FB5B8B",
+        muted: "#6286AB",
+        vibrant: "#FA5304"
+      }, 
+      '-KwBsZK2WKkLf-mX1Ryu': {
+        darkmuted: "#45352C",
+        darkvibrant: "#8E4434",
+        lightmuted: "#C8B5A7",
+        lightvibrant: "#F8D0AB",
+        muted: "#A9615F",
+        vibrant: "#EF1809"
+      }, 
+    };
+    this.setState({
+      savedPalettes
     });
+
+
+
+
+
+
+
+
+    // const self = this;
+    // let paletteRef = firebase.database().ref('/palettes');
+    // paletteRef.on('value', function(snapshot) {
+    //   const savedPalettes = snapshot.val() ? snapshot.val() : []
+    //   console.log(savedPalettes);
+    //   self.setState({
+    //     savedPalettes
+    //   })
+    // });
   }
 
   state = {
@@ -143,10 +139,10 @@ class App extends Component {
   removeSavedPalette(id) {
     const { ...savedPalettes } = this.state.savedPalettes; 
     delete savedPalettes[id];
-    firebase.database().ref('/palettes').child(id).remove();
-    // this.setState({
-    //   savedPalettes
-    // })
+    // firebase.database().ref('/palettes').child(id).remove();
+    this.setState({
+      savedPalettes
+    })
   }
 
   render() {

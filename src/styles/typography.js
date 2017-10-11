@@ -1,14 +1,11 @@
 export const fontSize = {
   // heading
-  displayLarge: '32px',
-  displayMedium: '26px',
-  displaySmall: '20px',
-  heading: '18px',
-  subheading: '16px',
-
+  headingXLarge: '64px',
+  headingLarge: '32px',
+  headingMedium: '26px',
+  headingSmall: '20px',
   // body
-  body: '17px',
-  caption: '15px',
+  body: '18px',
 };
 
 export const fontWeight = {

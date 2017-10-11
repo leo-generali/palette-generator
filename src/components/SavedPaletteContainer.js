@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
+import { colors } from '../styles/global';
+import { fontSize } from '../styles/typography';
 
 import SavedPalette from './SavedPalette';
 
@@ -7,8 +9,8 @@ class SavedPaletteContainer extends Component {
   render() {
     return(
       <div>
-        <h1>Saved Palettes</h1>
-        <div>
+        <h1 className={css(styles.header)}>Saved Palettes</h1>
+        <div className={css(styles.palettes)}>
           {
             Object.entries(this.props.savedPalettes).map((elem, index) => 
               <SavedPalette 
@@ -35,7 +37,20 @@ class SavedPaletteContainer extends Component {
   }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
+  header: {
+    color: colors.background,
+    fontSize: fontSize.headingXLarge,
+    letterSpacing: '2px',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textShadow: '0px 20px 50px rgba(0,0,0,0.4)'
+  },
+
+  palettes: {
+    maxWidth: '960px',
+    margin: '0 auto'
+  }
 })
 
 export default SavedPaletteContainer;
