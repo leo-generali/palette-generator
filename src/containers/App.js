@@ -18,6 +18,7 @@ class App extends Component {
     super();
     this.onDrop = this.onDrop.bind(this);
     this.savePaletteToDB = this.savePaletteToDB.bind(this);
+    this.changeDisplayedPalette = this.changeDisplayedPalette.bind(this);
   }
 
   //Now that I know this works - temporariliy turning it off during development to avoid
@@ -95,6 +96,20 @@ class App extends Component {
     });
   }
 
+  changeDisplayedPalette(paletteToChangeTo) {
+    const palette = {
+      vibrant: paletteToChangeTo.vibrant,
+      muted: paletteToChangeTo.muted,
+      darkvibrant: paletteToChangeTo.darkvibrant,
+      darkmuted: paletteToChangeTo.darkmuted,
+      lightvibrant: paletteToChangeTo.lightvibrant,
+      lightmuted: paletteToChangeTo.lightmuted
+    }
+    this.setState({
+      palette
+    });
+  }
+
   createPalette(palette) {
     const colors = {
       vibrant: palette.Vibrant.getHex().toUpperCase(),
@@ -140,6 +155,7 @@ class App extends Component {
         />
         <SavedPalettes 
           savedPalettes={this.state.savedPalettes}
+          changeDisplayedPalette={this.changeDisplayedPalette}
         />
       </div>
     );

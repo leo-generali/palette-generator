@@ -9,7 +9,9 @@ class SavedPalettes extends Component {
       <div>
         <h1>Saved Palettes</h1>
         <div>
-          {this.props.savedPalettes.map((palette, index) => <h1 key={index}>{palette.key}</h1>)}
+          {
+            this.props.savedPalettes.map((palette, index) => <h1 onClick={() => this.props.changeDisplayedPalette(palette)} key={index}>{palette.key}</h1>)
+          }
         </div>
       </div>
     )
