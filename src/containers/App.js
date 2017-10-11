@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as Vibrant from 'node-vibrant'
+import * as Vibrant from 'node-vibrant';
 
-import firebase from '../helpers/firebase'
+import firebase from '../helpers/firebase';
 
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { tagMapping, fontSize, fontWeight, lineHeight } from '../styles/typography';
@@ -10,7 +10,7 @@ import ImagePreview from '../components/ImagePreview';
 import FileUpload from '../components/FileUpload';
 import SaveButton from '../components/SaveButton';
 import CurrentPalette from '../components/CurrentPalette';
-import SavedPalettes from '../components/SavedPalettes';
+import SavedPaletteContainer from '../components/SavedPaletteContainer';
 
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
     this.changeDisplayedPalette = this.changeDisplayedPalette.bind(this);
   }
 
-  //Now that I know this works - temporariliy turning it off during development to avoid
+  //Now that I know this works - temporarily turning it off during development to avoid
   //pinging the firebase DB too much
 
   componentWillMount(){
@@ -53,17 +53,17 @@ class App extends Component {
         muted: "#6286AB",
         vibrant: "#FA5304"
       }
-    ]
+    ];
     this.setState({
       savedPalettes
-    })
+    });
 
     // const self = this;
     // firebase.database().ref('/palettes').on('value', function(snapshot) {
     //   const savedPalettes = Object.entries(snapshot.val()).map(e => Object.assign(e[1], {key: e[0] }));
-      // self.setState({
-      //   savedPalettes
-      // })
+    //   self.setState({
+    //     savedPalettes
+    //   })
     // });
   }
 
@@ -124,17 +124,17 @@ class App extends Component {
 
   savePaletteToDB(e){
     e.preventDefault();
-    const paletteArr = this.state.palette;
-    const paletteObj = {
-      vibrant: paletteArr[0],
-      muted: paletteArr[1],
-      darkvibrant: paletteArr[2],
-      darkmuted: paletteArr[3],
-      lightvibrant: paletteArr[4],
-      lightmuted: paletteArr[5],
-    }
-    const paletteRef = firebase.database().ref('/').child('palettes');
-    const newPaletteRef = paletteRef.push().set(paletteObj);
+    // const currentPalette = this.state.palette;
+    // const paletteObj = {
+    //   vibrant: currentPalette.vibrant,
+    //   muted: currentPalette.muted,
+    //   darkvibrant: currentPalette.darkvibrant,
+    //   darkmuted: currentPalette.darkmuted,
+    //   lightvibrant: currentPalette.lightvibrant,
+    //   lightmuted: currentPalette.lightmuted
+    // }
+    // const paletteRef = firebase.database().ref('/').child('palettes');
+    // const newPaletteRef = paletteRef.push().set(paletteObj);
   }
 
   render() {
@@ -153,7 +153,7 @@ class App extends Component {
         <SaveButton 
           savePaletteToDB={this.savePaletteToDB}
         />
-        <SavedPalettes 
+        <SavedPaletteContainer 
           savedPalettes={this.state.savedPalettes}
           changeDisplayedPalette={this.changeDisplayedPalette}
         />
