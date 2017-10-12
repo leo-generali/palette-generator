@@ -22,15 +22,6 @@ class SavedPaletteContainer extends Component {
                   key={index}
                 />
               )
-
-              // this.props.savedPalettes.map((palette, index) => 
-              //   <SavedPalette
-              //     changeDisplayedPalette={this.props.changeDisplayedPalette} 
-              //     palette={palette} 
-              //     key={index}
-              //     removeSavedPalette={this.props.removeSavedPalette} 
-              //   />
-              // )
             }
           </div>
         </div>
@@ -50,7 +41,6 @@ const styles = StyleSheet.create({
   },
 
   palettes: {
-
     maxWidth: '800px',
     margin: '100px auto 0',
     backgroundColor: 'rgba(255,255,255,0.1)',

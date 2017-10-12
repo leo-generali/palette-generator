@@ -4,13 +4,14 @@ import * as Vibrant from 'node-vibrant';
 import firebase from '../helpers/firebase';
 
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { tagMapping, fontSize, fontWeight, lineHeight } from '../styles/typography';
+import { fontSize } from '../styles/typography';
 
 import ImagePreview from '../components/ImagePreview';
 import FileUpload from '../components/FileUpload';
 import SaveButton from '../components/SaveButton';
 import CurrentPalette from '../components/CurrentPalette';
 import SavedPaletteContainer from '../components/SavedPaletteContainer';
+import Footer from '../components/Footer';
 
 
 class App extends Component {
@@ -191,6 +192,7 @@ class App extends Component {
           removeSavedPalette={this.removeSavedPalette}
           changeDisplayedPalette={this.changeDisplayedPalette}
         />
+        <Footer />
       </div>
     );
   }
