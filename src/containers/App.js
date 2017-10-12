@@ -188,6 +188,7 @@ class App extends Component {
         />
         <OptionsBar 
           savePaletteToDB={this.savePaletteToDB}
+          palette={this.state.palette}
         />
         <Separator text={"Saved Palettes"} />
         <SavedPaletteContainer 
@@ -203,7 +204,7 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    maxWidth: '1280px',
+    maxWidth: '960px',
     margin: '0 auto'
   }
 }) 

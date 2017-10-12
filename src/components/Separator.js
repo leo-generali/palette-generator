@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     letterSpacing: '2px',
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    textShadow: '0px 20px 50px rgba(0,0,0,0.4)'
+    textShadow: '0 6px 1px rgba(0,0,0, 0.10), 0 0px 5px rgba(0,0,0, 0.10), 0 1px 3px rgba(0,0,0, 0.30), 0 3px 5px rgba(0,0,0, 0.20), 0 5px 10px rgba(0,0,0, 0.25), 0 10px 10px rgba(0,0,0, 0.20), 0 20px 20px rgba(0,0,0, 0.15)',
+    textAlign: 'center'
   },
 });
 

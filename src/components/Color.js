@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { colors, card } from '../styles/global';
 import { fontFamily, fontSize } from '../styles/typography';
+import { copyText } from '../helpers/helpers';
 
 class Color extends Component {
   state = {
@@ -25,14 +26,8 @@ class Color extends Component {
     });
   }
 
-
   copyColor(color) {
-    const textArea = document.createElement('textarea');
-    textArea.value = color;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
+    copyText(color)
     this.setState({
       copyIcon: false
     })
@@ -105,10 +100,16 @@ const opacityKeyframes = {
   }
 };
 
+const data = {
+  cardHeight: 220,
+  cardWidth: 150,
+  infoHeight: 70
+}
+
 const styles = StyleSheet.create({
   card: {
-    height: '250px',
-    width: '180px',
+    height: data.cardHeight,
+    width: data.cardWidth,
     border: '1px solid '+ colors.text,
     borderRadius: card.borderRadius,
     overflow: 'hidden',
@@ -123,10 +124,18 @@ const styles = StyleSheet.create({
   },
 
   color: {
-    height: '180px',
+    height: data.cardHeight-data.infoHeight,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  info: {
+    height: data.infoHeight,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.background,
   },
 
   saveIcon: {
@@ -163,13 +172,6 @@ const styles = StyleSheet.create({
     borderRadius: card.borderRadius
   },
 
-  info: {
-    height: '70px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.background,
-  },
 
   text: {
     fontFamily: fontFamily.monospace,

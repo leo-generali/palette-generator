@@ -4,6 +4,7 @@ import { colors, card } from '../styles/global';
 import { fontSize, fontFamily } from '../styles/typography';
 
 import SaveButton from './OptionsBar/SaveButton';
+import CopyPaletteButton from './OptionsBar/CopyPaletteButton';
 
 
 class OptionsBar extends Component {
@@ -12,6 +13,9 @@ class OptionsBar extends Component {
       <div className={css(styles.optionsBar)}>
         <SaveButton
           savePaletteToDB={this.props.savePaletteToDB}
+        />
+        <CopyPaletteButton 
+          palette={this.props.palette}
         />
       </div>
     )

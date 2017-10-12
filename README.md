@@ -12,8 +12,8 @@
 
 **Application**
 - Rather than signing in, users will create unique URLs for each of their palettes. Easy sharing etc. - HP
-- Nice and fancy CSS transition to look like not garbage - MP
-  - Not convinced that the scale is the right move. It looks a little cheesy.
+<!-- - Nice and fancy CSS transition to look like not garbage - MP -->
+  <!-- - Not convinced that the scale is the right move. It looks a little cheesy. -->
 
 **Options Bar**
 - Find good icons for save - LP
@@ -34,6 +34,6 @@
 **Colors**
 - See closest names of colors above the hex number - MP
 - Tweak colors before saving - LP
-- Copy color on click - MP
-  - Add it when the hover state of the card is on
+<!-- - Copy color on click - MP -->
+  <!-- - Add it when the hover state of the card is on -->
 - Add an outline to lightly colored color names (Chroma.js?) - LP 
