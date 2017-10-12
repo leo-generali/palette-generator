@@ -3,6 +3,8 @@ import { StyleSheet, css } from 'aphrodite/no-important';
 import { colors, card } from '../styles/global';
 import { fontSize, fontFamily } from '../styles/typography';
 
+import deleteIcon from '../img/icons/circle-x.svg';
+
 class SavedPalette extends Component {
   render() {
     const palette = this.props.palette;
@@ -18,7 +20,11 @@ class SavedPalette extends Component {
           <div className={css(styles.savedPaletteColor)} style={{backgroundColor: palette.lightvibrant}}></div>
           <div className={css(styles.savedPaletteColor)} style={{backgroundColor: palette.lightmuted}}></div>
         </div>
-        <button className={css(styles.deleteButton)} onClick={() => this.props.removeSavedPalette(id)}>Del</button>
+        <button className={css(styles.deleteButton)} onClick={() => this.props.removeSavedPalette(id)}>
+          <svg className={css(styles.deleteIcon)} viewBox="0 0 8 8">
+            <path d="M4 0c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-1.5 1.78l1.5 1.5 1.5-1.5.72.72-1.5 1.5 1.5 1.5-.72.72-1.5-1.5-1.5 1.5-.72-.72 1.5-1.5-1.5-1.5.72-.72z" />          
+          </svg>
+        </button>
       </div>
     )
   }
@@ -62,9 +68,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
 
     ':hover': {
-      color: 'red',
-      cursor: 'pointer'
+      fill: 'red',
+      cursor: 'pointer',
     }
+  },
+
+  deleteIcon: {
+    height: '30px',
+    width: '30px'
   }
 });
 
