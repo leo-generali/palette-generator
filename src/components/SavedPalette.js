@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { colors, card } from '../styles/global';
-import { fontSize } from '../styles/typography';
+import { fontSize, fontFamily } from '../styles/typography';
 
 class SavedPalette extends Component {
   render() {
@@ -18,7 +18,7 @@ class SavedPalette extends Component {
           <div className={css(styles.savedPaletteColor)} style={{backgroundColor: palette.lightvibrant}}></div>
           <div className={css(styles.savedPaletteColor)} style={{backgroundColor: palette.lightmuted}}></div>
         </div>
-        <button className={css(styles.deleteButton)} onClick={() => this.props.removeSavedPalette(id)}/>
+        <button className={css(styles.deleteButton)} onClick={() => this.props.removeSavedPalette(id)}>Del</button>
       </div>
     )
   }
@@ -55,7 +55,16 @@ const styles = StyleSheet.create({
   deleteButton: {
     height: '50px',
     width: '50px',
-    backgroundColor: 'red',
+    transition: card.transition,
+    fontFamily: fontFamily.monospace,
+    letterSpacing: '5px',
+    fontSize: fontSize.headingSmall,
+    fontWeight: 'bold',
+
+    ':hover': {
+      color: 'red',
+      cursor: 'pointer'
+    }
   }
 });
 

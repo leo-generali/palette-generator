@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     color: colors.text,
     backgroundColor: colors.background, 
     borderRadius: card.borderRadius,
+    boxShadow: card.boxShadow,
     margin: '100px auto',
     maxWidth: '200px'
   },

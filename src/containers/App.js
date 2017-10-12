@@ -8,7 +8,7 @@ import { fontSize } from '../styles/typography';
 
 import ImagePreview from '../components/ImagePreview';
 import FileUpload from '../components/FileUpload';
-import SaveButton from '../components/SaveButton';
+import OptionsBar from '../components/OptionsBar';
 import CurrentPalette from '../components/CurrentPalette';
 import SavedPaletteContainer from '../components/SavedPaletteContainer';
 import Footer from '../components/Footer';
@@ -184,7 +184,7 @@ class App extends Component {
         <CurrentPalette 
           palette={this.state.palette}
         />
-        <SaveButton 
+        <OptionsBar 
           savePaletteToDB={this.savePaletteToDB}
         />
         <SavedPaletteContainer 

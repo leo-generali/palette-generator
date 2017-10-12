@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { colors, card } from '../styles/global';
-import { fontSize } from '../styles/typography';
+import { fontSize, fontFamily } from '../styles/typography';
 
 class Color extends Component {
   render() {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontFamily: '"SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;',
+    fontFamily: fontFamily.monospace,
     color: colors.text,
     fontSize: fontSize.body,
     letterSpacing: '3px'
