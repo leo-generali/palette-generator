@@ -14,9 +14,18 @@ class Color extends Component {
     });
   }
 
+  copyColor(color) {
+    const textArea = document.createElement('textarea');
+    textArea.value = color;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  }
+
   render() {    
     return (
-      <div className={css(styles.card)} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
+      <div className={css(styles.card)} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} onClick={() => this.copyColor(this.props.color)}>
         <div className={css(styles.color)} style={{backgroundColor: this.props.color}}>
           <svg 
             className={css(styles.saveIcon)} 
