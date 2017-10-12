@@ -4,9 +4,19 @@ import { colors, card } from '../styles/global';
 import { fontSize, fontFamily } from '../styles/typography';
 
 class Color extends Component {
+  state = {
+    hovering: false
+  }
+
+  handleHover = () => {
+    this.setState({
+      hovering: !this.state.hovering
+    });
+  }
+
   render() {
-    return(
-      <div className={css(styles.card)}>
+    return (
+      <div className={css(styles.card)} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
         <div className={css(styles.color)} style={{backgroundColor: this.props.color}}></div>
         <div className={css(styles.info)}>
           <p className={css(styles.text)} style={{color: this.props.color}}>{this.props.color}</p>
@@ -15,6 +25,8 @@ class Color extends Component {
     )
   }
 }
+
+
 
 const styles = StyleSheet.create({
   card: {

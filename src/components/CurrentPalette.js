@@ -10,7 +10,13 @@ class CurrentPalette extends Component {
     return(
       <div className={css(style.paletteContainer)}>
         {
-          colorsArr.map((color, index) => <Color key={index} className={css(style.color)} color={color} />)
+          colorsArr.map((color, index) => 
+            <Color 
+              key={index} 
+              className={css(style.color)} 
+              color={color}
+            />
+          )
         }
       </div>
     )
@@ -19,6 +25,7 @@ class CurrentPalette extends Component {
 
 const style = StyleSheet.create({
   paletteContainer: {
+    marginTop: '100px',
     display: 'flex',
     justifyContent: 'space-between'
   },

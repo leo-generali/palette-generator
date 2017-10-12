@@ -12,6 +12,8 @@ import OptionsBar from '../components/OptionsBar';
 import CurrentPalette from '../components/CurrentPalette';
 import SavedPaletteContainer from '../components/SavedPaletteContainer';
 import Footer from '../components/Footer';
+import Separator from '../components/Separator';
+
 
 
 class App extends Component {
@@ -181,12 +183,14 @@ class App extends Component {
           onDrop={this.onDrop}
           imagePath={this.state.imagePath}
         />
+        <Separator text={"Current Palette"} />
         <CurrentPalette 
           palette={this.state.palette}
         />
         <OptionsBar 
           savePaletteToDB={this.savePaletteToDB}
         />
+        <Separator text={"Saved Palettes"} />
         <SavedPaletteContainer 
           savedPalettes={this.state.savedPalettes}
           removeSavedPalette={this.removeSavedPalette}
