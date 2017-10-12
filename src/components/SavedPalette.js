@@ -3,8 +3,6 @@ import { StyleSheet, css } from 'aphrodite/no-important';
 import { colors, card } from '../styles/global';
 import { fontSize, fontFamily } from '../styles/typography';
 
-import deleteIcon from '../img/icons/circle-x.svg';
-
 class SavedPalette extends Component {
   render() {
     const palette = this.props.palette;

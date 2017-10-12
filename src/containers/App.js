@@ -4,7 +4,6 @@ import * as Vibrant from 'node-vibrant';
 import firebase from '../helpers/firebase';
 
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { fontSize } from '../styles/typography';
 
 import ImagePreview from '../components/ImagePreview';
 import FileUpload from '../components/FileUpload';
@@ -161,7 +160,7 @@ class App extends Component {
       lightmuted: currentPalette.lightmuted
     }
     const paletteRef = firebase.database().ref('/').child('palettes');
-    const newPaletteRef = paletteRef.push().set(paletteObj);
+    paletteRef.push().set(paletteObj);
   }
 
   removeSavedPalette(id) {

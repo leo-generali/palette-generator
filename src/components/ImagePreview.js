@@ -8,7 +8,7 @@ class ImagePreview extends Component {
     return(
       <div>
         <h1>Image Preview</h1>
-        <img src={path} className={css(styles.imagePreview)}></img>
+        <img src={path} className={css(styles.imagePreview)} alt="User Submitted Image!"></img>
       </div>
     )
   }
