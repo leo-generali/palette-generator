@@ -7,13 +7,49 @@ import { copyText } from '../../helpers/helpers';
 
 
 class CopyPaletteButon extends Component {
+
+  copyPreprocessor(palette, preprocessor) {
+    const preprocessors = {
+      js: '',
+      sass: '$',
+      less: '@',
+      stylus: ''
+    }
+
+    let string = '';
+    Object.entries(palette).forEach(function(keyValuePair) {
+      const key = keyValuePair[0];
+      const color = keyValuePair[1];
+
+      if(preprocessor === 'stylus') {
+        string += `${key} = ${color}\n`;
+      }else if(preprocessor === 'js'){
+        string += `  ${key}: '${color}',\n`;
+      }else {
+        string += `${preprocessors[preprocessor]}${key}: ${color};\n`;
+      }
+    });
+
+    if(preprocessor === 'js') {
+      string = `{\n${string}}`
+    }
+
+    copyText(string);
+  }
+
   render() {
     return(
       <div className={css(styles.card)}>
-        <button className={css(styles.button)}>
+        <button className={css(styles.button)} onClick={() => this.copyPreprocessor(this.props.palette, 'sass')}>
           <p>SASS</p>
         </button>
-        <button className={css(styles.button)} onClick={() => copyText(this.props.palette)}>
+        <button className={css(styles.button)} onClick={() => this.copyPreprocessor(this.props.palette, 'less')}>
+          <p>LESS</p>
+        </button>
+        <button className={css(styles.button)} onClick={() => this.copyPreprocessor(this.props.palette, 'stylus')}>
+          <p>STYLUS</p>
+        </button>
+        <button className={css(styles.button)} onClick={() => this.copyPreprocessor(this.props.palette, 'js')}>
           <p>JS</p>
         </button>
       </div>
