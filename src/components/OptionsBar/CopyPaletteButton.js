@@ -20,19 +20,12 @@ class CopyPaletteButon extends Component {
     Object.entries(palette).forEach(function(keyValuePair) {
       const key = keyValuePair[0];
       const color = keyValuePair[1];
-
-      if(preprocessor === 'stylus') {
-        string += `${key} = ${color}\n`;
-      }else if(preprocessor === 'js'){
-        string += `  ${key}: '${color}',\n`;
-      }else {
-        string += `${preprocessors[preprocessor]}${key}: ${color};\n`;
-      }
+      if(preprocessor === 'stylus') string += `${key} = ${color}\n`;
+      else if(preprocessor === 'js') string += `  ${key}: '${color}',\n`;
+      else string += `${preprocessors[preprocessor]}${key}: ${color};\n`;
     });
 
-    if(preprocessor === 'js') {
-      string = `{\n${string}}`
-    }
+    if(preprocessor === 'js') string = `{\n${string}}`;
 
     copyText(string);
   }

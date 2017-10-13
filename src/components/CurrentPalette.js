@@ -11,10 +11,10 @@ class CurrentPalette extends Component {
       <div className={css(style.paletteContainer)}>
         {
           colorsArr.map((color, index) => 
-            <Color 
-              key={index} 
-              className={css(style.color)} 
-              color={color}
+          <Color 
+              key = {index} 
+              className = {css(style.color)} 
+              color = {color}
             />
           )
         }
@@ -28,7 +28,7 @@ const style = StyleSheet.create({
     marginTop: '100px',
     display: 'flex',
     justifyContent: 'space-between'
-  },
+  }
 })
 
 export default CurrentPalette;
