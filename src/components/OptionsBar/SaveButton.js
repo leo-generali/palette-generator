@@ -11,27 +11,35 @@ class SaveButton extends Component {
 
   render() {
     return(
-      <button className={css(styles.button)} onClick={this.props.savePaletteToDB}>Save</button>
+      <div className={css(styles.card)}>
+        <button className={css(styles.button)} onClick={this.props.savePaletteToDB}>
+          <p>SAVE</p>
+        </button>
+      </div>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
+  card: {
     height: '50px',
-    width: '80px',
+    display: 'flex',
+    alignItems: 'center',
     backgroundColor: colors.background,
     borderRadius: card.borderRadius,
     fontFamily: fontFamily.monospace,
-    letterSpacing: '5px',
     fontSize: fontSize.headingSmall,
-    fontWeight: 'bold',
     transition: card.transition,
+  },
+
+  button: {
+    height: '40px',
+    width: '60px',
+    transition: card.transition,
+    cursor: 'pointer',
 
     ':hover': {
-      color: 'green',
-      cursor: 'pointer',
-      transform: card.transform,
+      color: 'red'
     }
   }
 }) 

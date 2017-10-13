@@ -63,8 +63,14 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    height: '20px',
+    height: '40px',
     width: '60px',
+    transition: card.transition,
+    cursor: 'pointer',
+
+    ':hover': {
+      color: 'red'
+    }
   }
 }) 
 

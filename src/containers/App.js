@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import * as Vibrant from 'node-vibrant';
 
+//Database
 import firebase from '../helpers/firebase';
 
+//Styling
+import { colors, card } from '../styles/global';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
+//Components
 import ImagePreview from '../components/ImagePreview';
 import FileUpload from '../components/FileUpload';
 import OptionsBar from '../components/OptionsBar';
@@ -12,8 +16,6 @@ import CurrentPalette from '../components/CurrentPalette';
 import SavedPaletteContainer from '../components/SavedPaletteContainer';
 import Footer from '../components/Footer';
 import Separator from '../components/Separator';
-
-
 
 class App extends Component {
   constructor() {
@@ -174,28 +176,35 @@ class App extends Component {
 
   render() {
     return (
-      <div className={css(styles.container)} >
-        <ImagePreview 
-          imagePath={this.state.imagePath}
-        />
-        <FileUpload 
-          onDrop={this.onDrop}
-          imagePath={this.state.imagePath}
-        />
-        <Separator text={"Current Palette"} />
-        <CurrentPalette 
-          palette={this.state.palette}
-        />
-        <OptionsBar 
-          savePaletteToDB={this.savePaletteToDB}
-          palette={this.state.palette}
-        />
-        <Separator text={"Saved Palettes"} />
-        <SavedPaletteContainer 
-          savedPalettes={this.state.savedPalettes}
-          removeSavedPalette={this.removeSavedPalette}
-          changeDisplayedPalette={this.changeDisplayedPalette}
-        />
+      <div>
+        <header className={css(styles.header)}>
+            <Separator text={"Palette Generator"} />
+            <div className={css(styles.headerContent)} >
+              <ImagePreview 
+                imagePath={this.state.imagePath}
+              />
+              <FileUpload 
+                onDrop={this.onDrop}
+                imagePath={this.state.imagePath}
+              />
+            </div>
+        </header>
+        <main className={css(styles.container)}>
+          <Separator text={"Current Palette"} />
+          <CurrentPalette 
+            palette={this.state.palette}
+          />
+          <OptionsBar 
+            savePaletteToDB={this.savePaletteToDB}
+            palette={this.state.palette}
+          />
+          <Separator text={"Saved Palettes"} />
+          <SavedPaletteContainer 
+            savedPalettes={this.state.savedPalettes}
+            removeSavedPalette={this.removeSavedPalette}
+            changeDisplayedPalette={this.changeDisplayedPalette}
+          />
+        </main>
         <Footer />
       </div>
     );
@@ -203,6 +212,23 @@ class App extends Component {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundImage: 'linear-gradient(145deg, #2A475E, #1D2838)',
+    marginBottom: '200px'
+  },
+  
+  headerContent: {
+    margin: '0 auto',
+    backgroundColor: colors.background,
+    borderRadius: card.borderRadius,
+    position: 'relative',
+    top: '100px',
+    maxWidth: '480px',
+    width: '100%',
+    padding: '40px',
+    boxShadow: card.boxShadow
+  },
+
   container: {
     maxWidth: '960px',
     margin: '0 auto'
