@@ -180,11 +180,11 @@ class App extends Component {
         <header className={css(styles.header)}>
             <Separator text={"Palette Generator"} />
             <div className={css(styles.headerContent)} >
-              <ImagePreview 
-                imagePath={this.state.imagePath}
-              />
               <FileUpload 
                 onDrop={this.onDrop}
+                imagePath={this.state.imagePath}
+              />
+              <ImagePreview 
                 imagePath={this.state.imagePath}
               />
             </div>
@@ -214,19 +214,23 @@ class App extends Component {
 const styles = StyleSheet.create({
   header: {
     backgroundImage: 'linear-gradient(145deg, #2A475E, #1D2838)',
-    marginBottom: '200px'
+    marginBottom: '200px',
+    boxShadow: card.boxShadow
   },
-  
+
   headerContent: {
     margin: '0 auto',
     backgroundColor: colors.background,
     borderRadius: card.borderRadius,
     position: 'relative',
     top: '100px',
-    maxWidth: '480px',
+    maxWidth: '640px',
     width: '100%',
     padding: '40px',
-    boxShadow: card.boxShadow
+    boxShadow: card.boxShadow,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
 
   container: {

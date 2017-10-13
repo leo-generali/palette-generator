@@ -9,11 +9,24 @@ class FileUpload extends Component {
 
   render() {
     return(
-      <section>
-        <Dropzone onDrop={this.props.onDrop} />
-      </section>
+      <Dropzone 
+        className={css(styles.dropzone)}
+        onDrop={this.props.onDrop} 
+        accept="image/jpeg, image/png"
+        style={{
+        }}
+      />
     )
   }
 }
+
+const styles = StyleSheet.create({
+  dropzone: {
+    minHeight: '200px',
+    minWidth: '200px',
+    margin: '20px',
+    border: '1px solid red',
+  }
+})
 
 export default FileUpload;
