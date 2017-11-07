@@ -84,31 +84,27 @@ class App extends Component {
     if (localStorage.getItem('paletteId') === null ){
       const id = prompt("Please create a custom palette ID");
       const paletteIdRef = firebase.database().ref('/').child('ids');
-      const paletteID = {};
-      paletteID[id] = true;
       paletteIdRef.child(id).set(true);
       localStorage.setItem('paletteId', id);
 
+      
+      const paletteRef = firebase.database().ref('/').child('palettes');
+      const paletteID = {};
+      paletteID[id] = false;
+      paletteRef.child(id).set(false);
 
-
-      // const paletteRef = firebase.database().ref('/').child('palettes');
-      // paletteRef.push().set(palette);
+      const self = this;
+      const userPaletteRef = firebase.database().ref(`/palettes/${id}`);
+      userPaletteRef.on('value', function(snapshot) {
+        const savedPalettes = snapshot.val() ? snapshot.val() : []
+        console.log(savedPalettes);
+        self.setState({
+          id,
+          savedPalettes
+        })
+      });
     }
 
-    // this.setState({
-    //   // id: localStorage.getItem('palette-id'),
-    //   savedPalettes
-    // });
-
-    // const self = this;
-    // let paletteRef = firebase.database().ref('/palettes');
-    // paletteRef.on('value', function(snapshot) {
-    //   const savedPalettes = snapshot.val() ? snapshot.val() : []
-    //   console.log(savedPalettes);
-    //   self.setState({
-    //     savedPalettes
-    //   })
-    // });
   }
 
   getLocalStoragePaletteId(){
@@ -183,14 +179,14 @@ class App extends Component {
       lightvibrant: currentPalette.lightvibrant,
       lightmuted: currentPalette.lightmuted
     }
-    const paletteRef = firebase.database().ref('/').child('palettes');
+    const paletteRef = firebase.database().ref('/').child(`palettes/${this.state.id}`);
     paletteRef.push().set(paletteObj);
   }
 
   removeSavedPalette(id) {
     const { ...savedPalettes } = this.state.savedPalettes; 
     delete savedPalettes[id];
-    firebase.database().ref('/palettes').child(id).remove();
+    firebase.database().ref(`/palettes/${this.state.id}`).child(id).remove();
     this.setState({
       savedPalettes
     })
