@@ -5,5 +5,17 @@ import './styles/global.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//React Router
+import { BrowserRouter, Route } from 'react-router-dom';
+
+const Root = () => {
+  return (
+    <BrowserRouter>
+      <Route path="/palettes/:paletteId" component={App} />
+      {/* <App /> */}
+    </BrowserRouter>
+  )
+}
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();

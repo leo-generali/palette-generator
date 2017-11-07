@@ -26,61 +26,7 @@ class App extends Component {
     this.removeSavedPalette = this.removeSavedPalette.bind(this);
   }
 
-  //Now that I know this works - temporarily turning it off during development to avoid
-  //pinging the firebase DB too much
-
   componentWillMount(){
-    // const savedPalettes = {
-    //   '-KwBqilCVz7RafGWXCEg': {
-    //     darkmuted: "#2E4658",
-    //     darkvibrant: "#042444",
-    //     lightmuted: "#D8B7A5",
-    //     lightvibrant: "#FB5B8B",
-    //     muted: "#6286AB",
-    //     vibrant: "#FA5304"
-    //   }, 
-    //   '-KwBsZK2WKkLf-mX1Ryu': {
-    //     darkmuted: "#45352C",
-    //     darkvibrant: "#8E4434",
-    //     lightmuted: "#C8B5A7",
-    //     lightvibrant: "#F8D0AB",
-    //     muted: "#A9615F",
-    //     vibrant: "#EF1809"
-    //   }, 
-    //   '-jdfgh-mX1Ryu': {
-    //     darkmuted: "#45352C",
-    //     darkvibrant: "#8E4434",
-    //     lightmuted: "#C8B5A7",
-    //     lightvibrant: "#F8D0AB",
-    //     muted: "#A9615F",
-    //     vibrant: "#EF1809"
-    //   },  
-    //   '-rqwe-mX1Ryu': {
-    //     darkmuted: "#45352C",
-    //     darkvibrant: "#8E4434",
-    //     lightmuted: "#C8B5A7",
-    //     lightvibrant: "#F8D0AB",
-    //     muted: "#A9615F",
-    //     vibrant: "#EF1809"
-    //   },  
-    //   '-faqwe-mX1Ryu': {
-    //     darkmuted: "#45352C",
-    //     darkvibrant: "#8E4434",
-    //     lightmuted: "#C8B5A7",
-    //     lightvibrant: "#F8D0AB",
-    //     muted: "#A9615F",
-    //     vibrant: "#EF1809"
-    //   },  
-    //   '-asd-mX1Ryu': {
-    //     darkmuted: "#45352C",
-    //     darkvibrant: "#8E4434",
-    //     lightmuted: "#C8B5A7",
-    //     lightvibrant: "#F8D0AB",
-    //     muted: "#A9615F",
-    //     vibrant: "#EF1809"
-    //   },  
-    // };
-
     if (localStorage.getItem('paletteId') === null ){
       const id = prompt("Please create a custom palette ID");
       const paletteIdRef = firebase.database().ref('/').child('ids');
@@ -97,14 +43,13 @@ class App extends Component {
       const userPaletteRef = firebase.database().ref(`/palettes/${id}`);
       userPaletteRef.on('value', function(snapshot) {
         const savedPalettes = snapshot.val() ? snapshot.val() : []
-        console.log(savedPalettes);
         self.setState({
           id,
           savedPalettes
         })
       });
     }
-
+    console.log(this.props.match.params.paletteId);
   }
 
   getLocalStoragePaletteId(){
